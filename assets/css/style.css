@@ -1,0 +1,13 @@
+body {
+	background-color: lightblue;
+	font-family: 'Raleway', sans-serif;
+}
+
+.hide-me {
+	display: none; // hides questions until Start button pressed
+				// or when pressed, hide Start button
+}
+
+.wrap {
+	border: solid 1px black;
+}
