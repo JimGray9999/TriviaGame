@@ -42,3 +42,5 @@ when the Submit button is pressed (end game)
 
 when time runs out (end game)
     end game function
+
+    https://hobbylark.com/party-games/FreeFun100QuestionQuiz
