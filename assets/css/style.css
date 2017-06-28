@@ -15,3 +15,11 @@ body {
 .button {
 	
 }
+
+.correct {
+	background-color: green;
+}
+
+.incorrect {
+	background-color: pink;
+}

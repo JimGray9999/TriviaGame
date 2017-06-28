@@ -10,32 +10,33 @@ $(document).ready(function() {
 		this.guess3 = guess3; // 3 of 3 wrong answers
 	}
 
-	
-
 	// holds count of player's responses
-	var correctTotal;
-	var incorrectTotal;
-	var incompleteTotal;
+	var correctTotal, incorrectTotal, incompleteTotal = 0;
 
 	// array of correct answers
-	var correctAnswers = [];
+	var answerKey = ["1C","2B","3A","4A"];
+
+	var guesses = [];
+	var questionLoop = ["q1", "q2", "q3", "q4"];
 
 	var isComplete = false; //check if all were answered
 
-	// 10 trivia questions
+	// 4 trivia questions
+	// todo: see if you can create a function to loop thru any # of questions
 	var question1 = new Question(
 		 "history",
 		 "Who was Henry VIII's first wife?",
-		 "Catherine of Aragon",
-		 "Mary Queen of Scots",
-		 "Elizabeth",
-		 "Josephine");
+		 "Mary Queen of Scots", // incorrect answer
+		 "Elizabeth", // incorrect answer
+		 "Catherine of Aragon", // correct answer
+		 "Josephine" // incorrect answer
+		 );
 
 	var question2 = new Question (
 		"history", // category
 		"Who was the legendary Benedictine monk who invented champagne?", //question
-		"Dom Perignon", // correct answer
 		"Hennesey", // incorrect answer
+		"Dom Perignon", // correct answer
 		"Don Quixote", // incorrect answer
 		"Honoratus" // incorrect answer
 		);
@@ -52,15 +53,54 @@ $(document).ready(function() {
 	var question4 = new Question (
 		"sports",
 		"What color jersey is worn by the winners of each stage of the Tour De France?",
-		"Yellow",
+		"Yellow", // correct
 		"Blue",
 		"Red",
 		"Green"
 		)
 
+
+	// todo: function to display the 30 second timer and countdown
+
+	function gradeQuiz (){
+
+		for (i = 0 ; i < questionLoop.length ; i++) {
+			guesses[i] = $("input[name="+questionLoop[i]+"]:checked"). val();
+     	};
+
+     	console.log(guesses);
+     	console.log(answerKey);
+     	console.log((guesses[0] === answerKey[0]));
+     	console.log((guesses[1] === answerKey[1]));
+     	console.log((guesses[2] === answerKey[2]));
+     	console.log((guesses[3] === answerKey[3]));
+
+     	// compare guesses and answerKey arrays
+
+     	for (i = 0 ; i < (answerKey.length + 1) ; i++) {
+     		if (guesses[i] === answerKey[i]){
+     			$("#question"+(i+1)).addClass("correct");
+     			correctTotal++;
+     		} else {
+     			$("#question"+(i+1)).addClass("incorrect");
+     			incorrectTotal++;
+     		}
+     	}
+
+     	console.log("You guessed " + correctTotal + " out of " + answerKey.length);
+     	console.log(incompleteTotal);
+     };
+
 	$("#start").on("click", function(){
+
 		$(".container").removeClass("hide-me"); //make questions visible
 		$("#start").addClass("hide-me"); // hide start button
+
+		// start 30 second timer
+		setTimeout(function() {
+		    console.log("time's up!");
+		    gradeQuiz();
+  		}, 30000);
 
 		// todo: function to build questions
 		$("#question1").children().eq(0).text(question1.question);
@@ -90,10 +130,14 @@ $(document).ready(function() {
 
 	$("#submit").on("click", function(){
 		
+		// if(isComplete){
+		// 	// score the answers
+		// 	// display results
+		// }
 
-		if(isComplete){
-			// score the answers
-			// display results
-		}
+		// collect all the guesses made
+		gradeQuiz();
+
+		
 	});
 });
