@@ -8,6 +8,10 @@ body {
 				// or when pressed, hide Start button
 }
 
-.wrap {
+.row {
 	border: solid 1px black;
+}
+
+.button {
+	
 }
