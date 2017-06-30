@@ -11,7 +11,9 @@ $(document).ready(function() {
 	}
 
 	// holds count of player's responses
-	var correctTotal, incorrectTotal, incompleteTotal = 0;
+	var correctTotal = 0;
+	var incorrectTotal = 0;
+	var incompleteTotal = 0;
 
 	// array of correct answers
 	var answerKey = ["1C","2B","3A","4A"];
@@ -20,6 +22,9 @@ $(document).ready(function() {
 	var questionLoop = ["q1", "q2", "q3", "q4"];
 
 	var isComplete = false; //check if all were answered
+
+	var countDown = 30; // set to 30 seconds initially
+	var intervalID; 
 
 	// 4 trivia questions
 	// todo: see if you can create a function to loop thru any # of questions
@@ -64,6 +69,11 @@ $(document).ready(function() {
 
 	function gradeQuiz (){
 
+		clearInterval(intervalID);
+
+		$("#countdown").text("");
+		$("#countdown").append("<h2>Score:</h2>");
+
 		for (i = 0 ; i < questionLoop.length ; i++) {
 			guesses[i] = $("input[name="+questionLoop[i]+"]:checked"). val();
      	};
@@ -77,7 +87,7 @@ $(document).ready(function() {
 
      	// compare guesses and answerKey arrays
 
-     	for (i = 0 ; i < (answerKey.length + 1) ; i++) {
+     	for (i = 0 ; i <= (answerKey.length - 1) ; i++) {
      		if (guesses[i] === answerKey[i]){
      			$("#question"+(i+1)).addClass("correct");
      			correctTotal++;
@@ -87,22 +97,51 @@ $(document).ready(function() {
      		}
      	}
 
+     	if (correctTotal === answerKey.length){
+     		$("#countdown").append("<h2>You guessed " + correctTotal + " out of " + answerKey.length + "!</h2>");
+     		$("#countdown").append("<h6>...smarty pants...</h6>");
+     	} else {
+     		$("#countdown").append("<h2>You guessed " + correctTotal + " out of " + answerKey.length + "</h2>");
+     	}
+     	
+
      	console.log("You guessed " + correctTotal + " out of " + answerKey.length);
-     	console.log(incompleteTotal);
+     	console.log(correctTotal);
+     	console.log(incorrectTotal);
      };
+
+    function timer (){
+    	intervalID = setInterval(tickTock, 1000);
+    };
+
+    function tickTock () {
+    	
+    	countDown--;
+
+    	$("#countdown").text(countDown + " seconds left!");
+
+    	if (countDown === 0){
+    		console.log("time's up!");
+    		$("#countdown").append("<h2>Time Is Up!</h2>");
+			gradeQuiz();
+		}
+    };
 
 	$("#start").on("click", function(){
 
 		$(".container").removeClass("hide-me"); //make questions visible
+		
+		// show timer
+		$("#countdown").removeClass("hide-me"); 
+		$("#countdown").append(countDown + " seconds left!");
+
 		$("#start").addClass("hide-me"); // hide start button
 
 		// start 30 second timer
-		setTimeout(function() {
-		    console.log("time's up!");
-		    gradeQuiz();
-  		}, 30000);
+		timer();
 
 		// todo: function to build questions
+
 		$("#question1").children().eq(0).text(question1.question);
 		$("#question1").children().eq(2).text(question1.corrAnswer);
 		$("#question1").children().eq(4).text(question1.guess1);
@@ -130,12 +169,6 @@ $(document).ready(function() {
 
 	$("#submit").on("click", function(){
 		
-		// if(isComplete){
-		// 	// score the answers
-		// 	// display results
-		// }
-
-		// collect all the guesses made
 		gradeQuiz();
 
 		

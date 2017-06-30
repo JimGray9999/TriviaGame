@@ -23,3 +23,7 @@ body {
 .incorrect {
 	background-color: pink;
 }
+
+#countdown {
+	text-align: center;
+}
