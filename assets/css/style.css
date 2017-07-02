@@ -6,7 +6,8 @@ body {
 .jumbotron {
 	height: 300px;
 	font-family: 'Exo', sans-serif;
-	background-image: url("assets/images/title-background.jpg");
+	color: white;
+	background-image: url('../images/background.jpg');
 }
 
 .hide-me {
@@ -24,6 +25,11 @@ body {
 	background-color: green;
 	width: 200px;
 	height: 150px;
+}
+
+.btn:hover {
+	color: blue;
+	background-color: red;
 }
 
 .correct {
