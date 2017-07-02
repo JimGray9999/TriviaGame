@@ -3,6 +3,12 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+.jumbotron {
+	height: 300px;
+	font-family: 'Exo', sans-serif;
+	background-image: url("assets/images/title-background.jpg");
+}
+
 .hide-me {
 	display: none; // hides questions until Start button pressed
 				// or when pressed, hide Start button
@@ -12,8 +18,12 @@ body {
 	border: solid 1px black;
 }
 
-.button {
-	
+.btn {
+	font-family: 'Exo', sans-serif;
+	color: purple;
+	background-color: green;
+	width: 200px;
+	height: 150px;
 }
 
 .correct {

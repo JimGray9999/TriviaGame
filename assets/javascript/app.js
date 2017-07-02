@@ -62,7 +62,7 @@ $(document).ready(function() {
 		"Blue",
 		"Red",
 		"Green"
-		)
+		);
 
 
 	// todo: function to display the 30 second timer and countdown
@@ -104,7 +104,6 @@ $(document).ready(function() {
      		$("#countdown").append("<h2>You guessed " + correctTotal + " out of " + answerKey.length + "</h2>");
      	}
      	
-
      	console.log("You guessed " + correctTotal + " out of " + answerKey.length);
      	console.log(correctTotal);
      	console.log(incorrectTotal);
@@ -132,7 +131,8 @@ $(document).ready(function() {
 		$(".container").removeClass("hide-me"); //make questions visible
 		
 		// show timer
-		$("#countdown").removeClass("hide-me"); 
+		// $("#countdown").removeClass("hide-me"); 
+		$("#countdown").fadeToggle();
 		$("#countdown").append(countDown + " seconds left!");
 
 		$("#start").addClass("hide-me"); // hide start button
@@ -170,7 +170,6 @@ $(document).ready(function() {
 	$("#submit").on("click", function(){
 		
 		gradeQuiz();
-
 		
 	});
 });
