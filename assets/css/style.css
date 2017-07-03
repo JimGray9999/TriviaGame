@@ -3,8 +3,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
-.jumbotron {
-	height: 300px;
+#heading {
 	font-family: 'Exo', sans-serif;
 	color: white;
 	background-image: url('../images/background.jpg');
@@ -15,21 +14,26 @@ body {
 				// or when pressed, hide Start button
 }
 
-.row {
-	border: solid 1px black;
+.btn .panel-heading {
+	font-family: 'Exo', sans-serif;
 }
 
 .btn {
-	font-family: 'Exo', sans-serif;
 	color: purple;
 	background-color: green;
 	width: 200px;
-	height: 150px;
+	height: 115px;
+	border-radius: 24px;
 }
 
 .btn:hover {
 	color: blue;
 	background-color: red;
+	opacity: 0.5;
+}
+
+.item {
+	text-align: center;
 }
 
 .correct {
@@ -42,4 +46,8 @@ body {
 
 #countdown {
 	text-align: center;
+}
+
+.carousel-indicators {
+	background: black;
 }

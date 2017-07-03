@@ -64,9 +64,6 @@ $(document).ready(function() {
 		"Green"
 		);
 
-
-	// todo: function to display the 30 second timer and countdown
-
 	function gradeQuiz (){
 
 		clearInterval(intervalID);
@@ -128,15 +125,15 @@ $(document).ready(function() {
 
 	$("#start").on("click", function(){
 
-		$(".container").removeClass("hide-me"); //make questions visible
-		
+		$(".theQuestions").removeClass("hide-me"); //make questions visible
+		$(".theQuestions").fadeIn();
 		// show timer
 		// $("#countdown").removeClass("hide-me"); 
 		$("#countdown").fadeToggle();
+		$("#submit").fadeToggle();
 		$("#countdown").append(countDown + " seconds left!");
 
-		$("#start").addClass("hide-me"); // hide start button
-
+		$("#start").fadeToggle(); // hide start button
 		// start 30 second timer
 		timer();
 
@@ -170,6 +167,7 @@ $(document).ready(function() {
 	$("#submit").on("click", function(){
 		
 		gradeQuiz();
+		$("#submit").fadeToggle();
 		
 	});
 });
