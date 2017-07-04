@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 	var isComplete = false; //check if all were answered
 
-	var countDown = 30; // set to 30 seconds initially
+	var countDown = 45; // set to 30 seconds initially
 	var intervalID; 
 
 	// 4 trivia questions
@@ -127,8 +127,8 @@ $(document).ready(function() {
 
 		$(".theQuestions").removeClass("hide-me"); //make questions visible
 		$(".theQuestions").fadeIn();
-		// show timer
-		// $("#countdown").removeClass("hide-me"); 
+		
+		// show timer 
 		$("#countdown").fadeToggle();
 		$("#submit").fadeToggle();
 		$("#countdown").append(countDown + " seconds left!");

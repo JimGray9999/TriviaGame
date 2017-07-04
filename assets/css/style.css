@@ -26,6 +26,14 @@ body {
 	border-radius: 24px;
 }
 
+.panel-body {
+	padding-bottom: 25px;
+}
+
+.input {
+	padding-right: 10px;
+}
+
 .btn:hover {
 	color: blue;
 	background-color: red;
